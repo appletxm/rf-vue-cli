@@ -1,6 +1,6 @@
 {
   "name": "rf-vue-cli",
-  "version": "1.0.0",
+  "version": "update package.json file",
   "private": true,
   "description": "a cli for rf-ui pc and mobile",
   "bin": {
@@ -18,8 +18,8 @@
     "download-git-repo": "^1.0.2",
     "inquirer": "^5.2.0",
     "ora": "^2.1.0",
-    "rf-vue-app-mobile": "^1.0.5",
-    "rf-vue-pc": "^1.0.1"
+    "rf-vue-app-mobile": "^1.0.6",
+    "rf-vue-pc": "^1.0.2"
   },
   "keywords": [
     "rf-vue-cli",

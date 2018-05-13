@@ -1,22 +1,41 @@
 {
-  "name": "my-vue-cli",
-  "version": "v0.0.1",
+  "name": "rf-vue-cli",
+  "version": "1.0.0",
   "private": true,
-  "description": "",
-  "main": "./src/index.js",
+  "description": "a cli for rf-ui pc and mobile",
+  "bin": {
+    "rf-vue-cli": "./bin/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rf-vue-cli": "node ./bin/index.js",
+    "release": "node ./scripts/release.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "download-git-repo": "^1.0.2",
+    "inquirer": "^5.2.0",
+    "ora": "^2.1.0",
+    "rf-vue-app-mobile": "^1.0.5",
+    "rf-vue-pc": "^1.0.1"
   },
   "keywords": [
-    "yeoman-vue-cli"
+    "rf-vue-cli",
+    "vue",
+    "my own cli"
   ],
-  "author": "appletang",
-  "license": "ISC",
-  "dependencies": {
-    "del": "^2.2.0",
-    "yeoman-generator": "^0.23.3"
+  "author": "appletxm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appletxm/rf-vue-cli.git"
   },
-  "nodejs": {
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/appletxm/rf-vue-cli/issues"
+  },
+  "node": {
     "version": ">=8.0"
   }
 }

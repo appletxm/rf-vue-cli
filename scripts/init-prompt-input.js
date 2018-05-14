@@ -16,6 +16,7 @@ function doInput (questions) {
     repl.start({
       prompt: `> ${questions[currentQaIndex]}`,
       eval(cmd, context, filename, callback) {
+        cmd = cmd.replace(/\n/g, '')
         if (cmd) {
           anwsers.push(cmd)
           if (currentQaIndex >= (questions.length - 1)) {

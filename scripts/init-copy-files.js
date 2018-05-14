@@ -68,10 +68,14 @@ function checkDirIsOk (checkPath) {
   console.info(fs.existsSync(path))
 }
 
-function doCopy(){
+function doCopy(destPath, copyPath){
+  console.info('@@@@@@@@@@@@', destPath, copyPath)
+
   let promise = new Promise((resolve) => {
     resolve(true)
   })
+
+  return promise
 }
 
 module.exports = {

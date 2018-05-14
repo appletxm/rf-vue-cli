@@ -16,7 +16,10 @@ function doInit () {
 
   prompInput.doInput(questions).then(anwsers => {
     let copyPath = ''
-    console.info('your input info:', anwsers)
+    let destPath = path.resolve('./test')
+
+    console.info('#######', __dirname)
+
     global.projectType = anwsers[0].replace(/\n/, '')
     global.projectName = anwsers[1].replace(/\n/, '')
 
@@ -25,12 +28,10 @@ function doInit () {
     } else {
       copyPath = 'rf-vue-pc'
     }
-
     copyPath = path.resolve('./node_modules/' + copyPath)
-
     spinner.start()
 
-    return copyFiles.doCopy()
+    return copyFiles.doCopy(destPath, copyPath)
   }).then(res => {
     spinner.stop()
     console.log(chalk.green('Init project success'))

@@ -1,7 +1,7 @@
 {
   "name": "rf-vue-cli",
-  "version": "1.0.1",
-  "private": true,
+  "version": "1.0.2",
+  "private": false,
   "description": "a cli for rf-ui pc and mobile",
   "bin": {
     "rf-vue-cli": "./bin/index.js"

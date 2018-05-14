@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-const initIndex = require('./init-index')
+const initIndex = require('../scripts/init-index')
 initIndex.doInit()

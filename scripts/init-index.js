@@ -1,5 +1,3 @@
-
-
 const copyFiles = require('./init-copy-files')
 const prompInput = require('./init-prompt-input')
 const defaultProjectName = 'my-app'
@@ -13,27 +11,22 @@ const path = require('path')
 global.projectType = defaultProjectType
 global.projectName = defaultProjectName
 
-
-function doInit(){
-  let questions = ['Please choose you project type, 1 for mobile 2 for pc, will use pc by default: ', 'Please input you project name: ']
+function doInit () {
+  let questions = ['Please choose you project type, 1 mobile 2 pc, will use 1 by default, just input 1 or 2: ', 'Please input you project name: ']
 
   prompInput.doInput(questions).then(anwsers => {
     let copyPath = ''
     console.info('your input info:', anwsers)
-    global.projectType = anwsers[0].replace(/\\n/, '')
-    global.projectName = anwsers[1].replace(/\\n/, '')
+    global.projectType = anwsers[0].replace(/\n/, '')
+    global.projectName = anwsers[1].replace(/\n/, '')
 
-    console.info('@@@@@1@@@@@@@', global.projectType, global.projectType === '2')
-
-    if (global.projectType === '2') {
+    if (global.projectType === '1') {
       copyPath = 'rf-vue-app-mobile'
     } else {
       copyPath = 'rf-vue-pc'
     }
 
     copyPath = path.resolve('./node_modules/' + copyPath)
-
-    console.info('@@@@2@@@@@', copyPath)
 
     spinner.start()
 
@@ -42,7 +35,7 @@ function doInit(){
     spinner.stop()
     console.log(chalk.green('Init project success'))
     process.exit()
-  }).catch( error => {
+  }).catch(error => {
     spinner.stop()
     console.log(chalk.red(error))
     process.exit()
@@ -50,5 +43,4 @@ function doInit(){
 }
 
 module.exports = {
-  doInit
-}
+doInit}

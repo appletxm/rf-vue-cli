@@ -11,8 +11,7 @@
     "rf-vue-cli": "node ./scripts/init.js",
     "release": "node ./scripts/release.js"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "download-git-repo": "^1.0.2",
@@ -20,6 +19,8 @@
     "ora": "^2.1.0",
     "rf-vue-app-mobile": "^1.0.6",
     "rf-vue-pc": "^1.0.2"
+  },
+  "devDependencies": {
   },
   "keywords": [
     "rf-vue-cli",

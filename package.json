@@ -1,6 +1,6 @@
 {
   "name": "rf-vue-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "a cli for rf-ui pc and mobile",
   "bin": {

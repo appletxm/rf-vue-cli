@@ -15,20 +15,19 @@ function doInit () {
   let questions = ['Please choose you project type, 1 mobile 2 pc, will use 1 by default, just input 1 or 2: ', 'Please input you project name: ']
 
   prompInput.doInput(questions).then(anwsers => {
-    let copyPath = ''
+    let copyPath =''
+    let copyFolder = ''
     let destPath = path.resolve('./test')
-
-    console.info('#######', __dirname)
 
     global.projectType = anwsers[0].replace(/\n/, '')
     global.projectName = anwsers[1].replace(/\n/, '')
 
     if (global.projectType === '1') {
-      copyPath = 'rf-vue-app-mobile'
+      copyFolder = 'rf-vue-app-mobile'
     } else {
-      copyPath = 'rf-vue-pc'
+      copyFolder = 'rf-vue-pc'
     }
-    copyPath = path.resolve('./node_modules/' + copyPath)
+    copyPath =  path.join((path.join(__dirname)).replace(/scripts/, 'node_modules'), '/', copyFolder)
     spinner.start()
 
     return copyFiles.doCopy(destPath, copyPath)

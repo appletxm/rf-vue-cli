@@ -77,8 +77,7 @@ function checkDirIsOk (checkPath) {
 }
 
 function doCopy(destPath, copyPath){
-  console.info('\n@@@@@@@@@@@@', destPath, copyPath)
-
+  // console.info('\n@@@@@@@@@@@@', destPath, copyPath)
   let promise = new Promise((resolve) => {
     copyFolder(copyPath, destPath)
     resolve(true)

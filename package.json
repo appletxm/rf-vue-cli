@@ -1,6 +1,6 @@
 {
   "name": "rf-vue-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "description": "a cli for rf-ui pc and mobile",
   "bin": {
@@ -17,7 +17,7 @@
     "download-git-repo": "^1.0.2",
     "inquirer": "^5.2.0",
     "ora": "^2.1.0",
-    "rf-vue-app-mobile": "^1.0.6",
+    "rf-vue-app-mobile": "^1.0.8",
     "rf-vue-pc": "^1.0.2"
   },
   "devDependencies": {

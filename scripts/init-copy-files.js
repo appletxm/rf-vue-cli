@@ -20,25 +20,33 @@ function readdir (srcPath) {
 
 function copyFolder (srcPath, destPath) {
   let files = []
+  let matchedIndex = -1
 
   if (fs.lstatSync(srcPath).isDirectory()) {
     if (!fs.existsSync(destPath)) {
       fs.mkdirSync(destPath)
     }
+
     files = readdir(srcPath)
-  }
+    
+    skiptFolderName.indexOf()
+    matchedIndex = files.indexOf(skiptFolderName)
+    if (matchedIndex >= 0) {
+      files.splice(matchedIndex, 1)
+    }
 
-  if (files && files.length > 0) {
-    files.forEach((file) => {
-      let curSource = path.join(srcPath, file)
-      let targetFolder = path.join(destPath, file)
-
-      if (fs.lstatSync(curSource).isDirectory()) {
-        copyFolder(curSource, targetFolder)
-      } else {
-        cpoyFile(curSource, targetFolder)
-      }
-    })
+    if (files && files.length > 0) {
+      files.forEach((file) => {
+        let curSource = path.join(srcPath, file)
+        let targetFolder = path.join(destPath, file)
+  
+        if (fs.lstatSync(curSource).isDirectory()) {
+          copyFolder(curSource, targetFolder)
+        } else {
+          cpoyFile(curSource, targetFolder)
+        }
+      })
+    }
   }
 }
 
@@ -69,9 +77,10 @@ function checkDirIsOk (checkPath) {
 }
 
 function doCopy(destPath, copyPath){
-  console.info('@@@@@@@@@@@@', destPath, copyPath)
+  console.info('\n@@@@@@@@@@@@', destPath, copyPath)
 
   let promise = new Promise((resolve) => {
+    copyFolder(copyPath, destPath)
     resolve(true)
   })
 

@@ -22,31 +22,29 @@ function copyFolder (srcPath, destPath) {
   let files = []
   let matchedIndex = -1
 
-  if (fs.lstatSync(srcPath).isDirectory()) {
-    if (!fs.existsSync(destPath)) {
-      fs.mkdirSync(destPath)
-    }
+  if (!fs.existsSync(destPath)) {
+    fs.mkdirSync(destPath)
+  }
 
-    files = readdir(srcPath)
-    
-    skiptFolderName.indexOf()
-    matchedIndex = files.indexOf(skiptFolderName)
-    if (matchedIndex >= 0) {
-      files.splice(matchedIndex, 1)
-    }
-
-    if (files && files.length > 0) {
-      files.forEach((file) => {
-        let curSource = path.join(srcPath, file)
-        let targetFolder = path.join(destPath, file)
+  files = readdir(srcPath)
   
-        if (fs.lstatSync(curSource).isDirectory()) {
-          copyFolder(curSource, targetFolder)
-        } else {
-          cpoyFile(curSource, targetFolder)
-        }
-      })
-    }
+  skiptFolderName.indexOf()
+  matchedIndex = files.indexOf(skiptFolderName)
+  if (matchedIndex >= 0) {
+    files.splice(matchedIndex, 1)
+  }
+
+  if (files && files.length > 0) {
+    files.forEach((file) => {
+      let curSource = path.join(srcPath, file)
+      let targetFolder = path.join(destPath, file)
+
+      if (fs.lstatSync(curSource).isDirectory()) {
+        copyFolder(curSource, targetFolder)
+      } else {
+        cpoyFile(curSource, targetFolder)
+      }
+    })
   }
 }
 

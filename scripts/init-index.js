@@ -53,7 +53,7 @@ function initProject () {
 }
 
 function getCurrentModuleVersion () {
-  let packageInfo = path.resolve('./package.json')
+  let packageInfo = path.join(__dirname, '../package.json')
   let version
 
   packageInfo = fs.readFileSync(packageInfo, 'utf8')

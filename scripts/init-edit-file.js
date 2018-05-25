@@ -1,12 +1,18 @@
 const fs = require('fs')
 
-function editPackageJsonFile(packageJsonFilePath, projectName){
+function editPackageJsonFile (packageJsonFilePath, projectName, copyFolder) {
   let pacakgeFile
-  let promise = new Promise((resolve) => {
+  let nameReg
+  let newProjectNameStr
+  let promise
+
+  promise = new Promise((resolve) => {
     pacakgeFile = fs.readFileSync(packageJsonFilePath, 'utf8')
-    pacakgeFile = pacakgeFile.replace(/"name"\:\s*".+"/, ('"name": ' + '"' + projectName + '"'))
-    pacakgeFile = pacakgeFile.replace(/"escapedName"\:\s*".+"/, ('"escapedName": ' + '"' + projectName + '"'))
-    let reg = /"name"\: ".+"/
+    nameReg = new RegExp('"' + copyFolder + '"', 'g')
+    newProjectNameStr = '"' + projectName + '"'
+    pacakgeFile = pacakgeFile.replace(nameReg, newProjectNameStr)
+    fs.writeFileSync(packageJsonFilePath, pacakgeFile, {encoding: 'utf8'})
+
     resolve(true)
   })
 
@@ -14,5 +20,4 @@ function editPackageJsonFile(packageJsonFilePath, projectName){
 }
 
 module.exports = {
-  editPackageJsonFile
-}
+editPackageJsonFile}

@@ -27,7 +27,7 @@ function copyFolder (srcPath, destPath) {
   }
 
   files = readdir(srcPath)
-  
+
   skiptFolderName.indexOf()
   matchedIndex = files.indexOf(skiptFolderName)
   if (matchedIndex >= 0) {
@@ -74,7 +74,7 @@ function checkDirIsOk (checkPath) {
   console.info(fs.existsSync(path))
 }
 
-function doCopy(destPath, copyPath){
+function doCopy (destPath, copyPath) {
   // console.info('\n@@@@@@@@@@@@', destPath, copyPath)
   let promise = new Promise((resolve) => {
     copyFolder(copyPath, destPath)
@@ -89,5 +89,4 @@ module.exports = {
   readdir,
   copyFolder,
   checkDirIsOk,
-  doCopy
-}
+doCopy}

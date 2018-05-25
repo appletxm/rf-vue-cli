@@ -8,15 +8,19 @@ const ora = require('ora')
 const chalk = require('chalk')
 const spinner = ora(chalk.green('Init project start'))
 const path = require('path')
+const fs = require('fs')
 
-let copyPath =''
+const args = process.argv[2]
+
+let copyPath = ''
 let copyFolder = ''
 let destPath = path.resolve('./')
+let packageJsonFilePath = ''
 
 global.projectType = defaultProjectType
 global.projectName = defaultProjectName
 
-function doInit () {
+function initProject () {
   let questions = ['Please choose you project type, 1 mobile 2 pc, will use 1 by default, just input 1 or 2: ', 'Please input you project name: ']
 
   prompInput.doInput(questions).then(anwsers => {
@@ -28,14 +32,14 @@ function doInit () {
     } else {
       copyFolder = 'rf-vue-pc'
     }
-    copyPath =  path.join((path.join(__dirname)).replace(/scripts/, 'node_modules'), '/', copyFolder)
+    copyPath = path.join((path.join(__dirname)).replace(/scripts/, 'node_modules'), '/', copyFolder)
     spinner.start()
 
     return copyFiles.doCopy(destPath, copyPath)
   }).then(res => {
-    let packageJsonFilePath = path.join(copyPath + '/package.json')
-    if(res === true){
-      return editFile.editPackageJsonFile(packageJsonFilePath, projectName)
+    packageJsonFilePath = path.join(copyPath + '/package.json')
+    if (res === true) {
+      return editFile.editPackageJsonFile(packageJsonFilePath, projectName, copyFolder)
     }
   }).then(res => {
     spinner.stop()
@@ -46,6 +50,27 @@ function doInit () {
     console.log(chalk.red(error))
     process.exit()
   })
+}
+
+function getCurrentModuleVersion () {
+  let packageInfo = path.resolve('./package.json')
+  let version
+
+  packageInfo = fs.readFileSync(packageInfo, 'utf8')
+  packageInfo = packageInfo.replace(/\n|\r|\t|\s/g, '')
+  version = packageInfo.match(/"name"\:"rf-vue-cli","version"\:"([^"]+)".+/)[1]
+  console.info(version)
+}
+
+function doInit () {
+  let checkV = ['-v', '--version']
+  if (args) {
+    if (checkV.indexOf(args) >= 0) {
+      getCurrentModuleVersion()
+    }
+  } else {
+    initProject()
+  }
 }
 
 module.exports = {
